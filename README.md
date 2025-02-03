@@ -1,4 +1,4 @@
-# eCommerce-follow-along
+## eCommerce-follow-along
 
 ## Project Overview: E-Commerce Application (MERN Stack)
 
