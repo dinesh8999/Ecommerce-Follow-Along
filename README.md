@@ -90,3 +90,11 @@ Implemented an edit form with autofilled previous data for seamless updates.
 Learning Goals:
 Developed an API endpoint to delete products from the database.
 Ensured dynamic removal of products from both the frontend and backend.
+## Milestone 15 Responsive Navbar Added
+A responsive Navbar component has been created with links to all pages ensuring smooth navigation across the application. The component is designed for reusability across multiple pages and is fully responsive.
+
+## Milestone 16 Product Detail Page Added
+A Product Detail Page has been added providing in-depth information about each product. The page includes links to the Buy and Cart pages a responsive design and a section displaying similar products at the bottom.
+
+## Milestone 17 Cart Functionality in Node.js and MongoDB
+This milestone adds cart functionality allowing users to create a cart add products retrieve cart details and remove products from their cart.
