@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const User = require('../model/userModel');
+const User = require('./UserSchema');
 require('dotenv').config();
 
-// Signup Route
+// ✅ Signup Route
 router.post("/signup", async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -14,16 +14,16 @@ router.post("/signup", async (req, res) => {
       return res.status(400).json({ message: "All fields are required" });
     }
 
-    // Check if email is already in use
-    const existingUser = await User.findOne({ email:email });
+    // ✅ Check if email is already in use
+    const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: "Email already exists" });
     }
 
-    // Hash password
+    // ✅ Hash password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Create new user
+    // ✅ Create new user
     const newUser = new User({ name, email, password: hashedPassword });
     await newUser.save();
 
@@ -34,44 +34,45 @@ router.post("/signup", async (req, res) => {
   }
 });
 
-// Login Route
+// ✅ Login Route
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    const user = await User.findOne({ email: email });
+    const user = await User.findOne({ email });
     if (!user) {
       return res.status(400).json({ message: 'Invalid credentials' });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
+      console.log("Password mismatch"); // ✅ Debugging
       return res.status(403).json({ message: 'Invalid credentials' });
     }
 
     const token = jwt.sign(
       { userId: user._id, email: user.email },
-      process.env.SECRET_KEY || "fallback_secret",  // Use fallback if SECRET_KEY is undefined
+      process.env.SECRET_KEY || "fallback_secret",
+      { expiresIn: "7d" } // ✅ Set token expiry
     );
+
     console.log("Generated Token:", token);
-    
 
     res.status(200).json({
       message: "Login successful",
       token,
-      user: { userId: user._id, name: user.name }  // ✅ Send user details
-  });
-  
+      user: { userId: user._id, name: user.name }
+    });
   } catch (err) {
     console.error("Login error:", err);
     res.status(500).json({ message: 'Server Error' });
   }
 });
 
-// Get all users
+// ✅ Get all users
 router.get('/users', async (req, res) => {
   try {
-    const users = await User.find();
+    const users = await User.find().select("-password");
     if (!users || users.length === 0) {
       return res.status(404).json({ message: "No users found" });
     }
