@@ -98,3 +98,36 @@ A Product Detail Page has been added providing in-depth information about each p
 
 ## Milestone 17 Cart Functionality in Node.js and MongoDB
 This milestone adds cart functionality allowing users to create a cart add products retrieve cart details and remove products from their cart.
+
+## Milestone 18: Fetch Cart Items by Email
+Added a backend API to retrieve cart products using the user's email, returning detailed product information for display.
+
+## Milestone 19: Cart System Implementation
+Developed a dynamic cart page with frontend and backend functionality. Users can view products, adjust quantities with + and - buttons, and backend endpoints manage updates efficiently.
+
+## Milestone 20: Profile Page & User Data API
+Created a profile page displaying user details (photo, name, email, address) with an option to add addresses. A backend API fetches and manages user data, ensuring a responsive and user-friendly experience. Milestone 21 Developed a frontend form to collect user inputs for country, city, address line 1, address line 2, zip code, and address type, along with displaying the address if available.
+
+## Milestone 22
+Created a backend endpoint to receive address details from the frontend and store them within the user's profile in the database.
+
+## Milestone 23
+Implemented a page allowing users to select an address during the cart checkout process.
+
+## Milestone 24
+Developed a confirmation page to review order details before finalizing the checkout.
+
+## Milestone 25
+Built a backend endpoint to process order placements.
+
+## Milestone 26
+Created an endpoint that retrieves a user’s orders based on their email.
+
+## Milestone 27
+Designed the "My Orders" page for smooth order tracking and management.
+
+## Milestone 28
+Added functionality to allow users to cancel their orders.
+
+## Milestone 29
+Integrated PayPal as a payment gateway, giving users the option to choose between Cash on Delivery (COD) and online payment via PayPal.
